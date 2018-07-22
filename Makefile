@@ -29,6 +29,12 @@ run:
 install:
 	docker run -it --rm --name $(IMAGE)-install -v $(MY_PWD):/app -e "NODE_ENV=dev" $(IMAGE_BASE)/$(IMAGE) npm install
 
+update:
+	docker run -it --rm --name $(IMAGE)-install -v $(MY_PWD):/app -e "NODE_ENV=dev" $(IMAGE_BASE)/$(IMAGE) npm update
+
+audit:
+	docker run -it --rm --name $(IMAGE)-install -v $(MY_PWD):/app -e "NODE_ENV=dev" $(IMAGE_BASE)/$(IMAGE) npm audit fix
+
 shell:
 	docker exec -it $(IMAGE) sh
 
